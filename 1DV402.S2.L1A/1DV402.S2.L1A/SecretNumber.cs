@@ -42,7 +42,7 @@ namespace _1DV402.S2.L1A
                 throw new ArgumentOutOfRangeException();
             }
 
-            if (_count > MaxNumberOfGuesses - 1)
+            if (_count +1 > MaxNumberOfGuesses)
             {
                 throw new ApplicationException();
             }
@@ -51,7 +51,7 @@ namespace _1DV402.S2.L1A
 
             if (number == _number)
             {
-                Console.WriteLine("RÄTT GISSAT. Du klarade det på {0} försök.", _count); // (MaxNumberOfGuesses -(_count++)));
+                Console.WriteLine("RÄTT GISSAT. Du klarade det på {0} försök.", _count); 
                 return true;
             }
 
@@ -64,7 +64,7 @@ namespace _1DV402.S2.L1A
             if (number > _number)
             {
                 
-                Console.WriteLine("{0} är för högt. Du har {1} gissningar kvar.",number, MaxNumberOfGuesses - (_count)); // (MaxNumberOfGuesses - (_count++)));
+                Console.WriteLine("{0} är för högt. Du har {1} gissningar kvar.",number, MaxNumberOfGuesses - (_count));
             }
           
 
