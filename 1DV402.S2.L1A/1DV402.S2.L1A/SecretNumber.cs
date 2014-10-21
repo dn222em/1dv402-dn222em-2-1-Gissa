@@ -16,6 +16,17 @@ namespace _1DV402.S2.L1A
         public const int MaxNumberOfGuesses = 7;
 
         /// <summary>
+        /// Konstruktor (Constructor)
+        /// Konstruktorn har till uppgift att se till att ett SecretNumber-objekt är korrekt initierat. 
+        /// Det innebär att fälten har blivit tilldelade lämpliga värden, vilket enklast görs genom att låta 
+        /// konstruktorn anropa metoden Initialize(). 
+        /// </summary>
+        public SecretNumber()
+        {
+            Initialize();
+        }
+        
+        /// <summary>
         /// Publik metod som initierar klassens fält. 
         /// </summary>
         public void Initialize()
@@ -35,16 +46,14 @@ namespace _1DV402.S2.L1A
         /// <returns></returns>
         public bool MakeGuess(int number)
         {
+            if (_count >= MaxNumberOfGuesses)
+            {
+                throw new ApplicationException();
+            }
 
-            
             if (number < 1 || number > 100)
             {
                 throw new ArgumentOutOfRangeException();
-            }
-
-            if (_count +1 > MaxNumberOfGuesses)
-            {
-                throw new ApplicationException();
             }
 
             _count++;
@@ -57,13 +66,10 @@ namespace _1DV402.S2.L1A
 
             if (number < _number)
             {
-
                 Console.WriteLine("{0} är för lågt. Du har {1} gissningar kvar.", number, MaxNumberOfGuesses - (_count)); 
             }
-
-            if (number > _number)
+            else
             {
-                
                 Console.WriteLine("{0} är för högt. Du har {1} gissningar kvar.",number, MaxNumberOfGuesses - (_count));
             }
           
@@ -75,16 +81,5 @@ namespace _1DV402.S2.L1A
 
             return false;
         }
-
-        /// <summary>
-        /// Konstruktor (Constructor)
-        /// Konstruktorn har till uppgift att se till att ett SecretNumber-objekt är korrekt initierat. 
-        /// Det innebär att fälten har blivit tilldelade lämpliga värden, vilket enklast görs genom att låta 
-        /// konstruktorn anropa metoden Initialize(). 
-        /// </summary>
-        public SecretNumber()
-        {
-            Initialize();
-        }      
     }
 }
